@@ -1,7 +1,7 @@
 import Foundation
 
 public struct MidiResponse: Codable {
-    let notes: [PredictNote]
+    public let notes: [PredictNote]
 }
 
 // Represents each instrument in the JSON response
