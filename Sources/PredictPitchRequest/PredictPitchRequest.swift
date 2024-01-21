@@ -6,12 +6,12 @@ public struct MidiResponse: Codable {
 
 // Represents each instrument in the JSON response
 public struct Instrument: Codable {
-    let name: String?
-    let program: Int
-    let isDrum: Bool
-    let notes: [Note]
+    public let name: String?
+    public let program: Int
+    public let isDrum: Bool
+    public let notes: [Note]
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case name
         case program
         case isDrum = "is_drum"
@@ -21,10 +21,10 @@ public struct Instrument: Codable {
 
 // Represents each note in the JSON response
 public struct Note: Codable {
-    let pitch: Int
-    let start: Double
-    let end: Double
-    let velocity: Int
+    public let pitch: Int
+    public let start: Double
+    public let end: Double
+    public let velocity: Int
 }
 
 public enum HTTPMethod: String {
@@ -66,7 +66,7 @@ public struct AudioFileUploadRequest: URLRequestProtocol {
     public var headers: [String: String]?
     private static let boundary: String = "Boundary-\(UUID().uuidString)"
 
-    init(fileUrl: URL, endpoint: String) throws {
+    public init(fileUrl: URL, endpoint: String) throws {
         guard let endpointURL = URL(string: endpoint) else {
             throw AudioFileUploadError.invalidFileURL
         }
