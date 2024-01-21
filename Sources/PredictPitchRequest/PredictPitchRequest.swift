@@ -1,11 +1,11 @@
 import Foundation
 
-struct MidiResponse: Codable {
+public struct MidiResponse: Codable {
     let instruments: [Instrument]
 }
 
 // Represents each instrument in the JSON response
-struct Instrument: Codable {
+public struct Instrument: Codable {
     let name: String?
     let program: Int
     let isDrum: Bool
@@ -20,19 +20,19 @@ struct Instrument: Codable {
 }
 
 // Represents each note in the JSON response
-struct Note: Codable {
+public struct Note: Codable {
     let pitch: Int
     let start: Double
     let end: Double
     let velocity: Int
 }
 
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
 }
 
-protocol URLRequestProtocol {
+public protocol URLRequestProtocol {
     var url: URL { get }
     var body: Data { get }
     var method: HTTPMethod { get }
@@ -41,7 +41,7 @@ protocol URLRequestProtocol {
 }
 
 extension URLRequestProtocol {
-    var urlRequest: URLRequest {
+    public var urlRequest: URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.httpBody = body
@@ -54,16 +54,16 @@ extension URLRequestProtocol {
     }
 }
 
-enum AudioFileUploadError: Error {
+public enum AudioFileUploadError: Error {
     case invalidFileURL
     case fileDataReadError
 }
 
-struct AudioFileUploadRequest: URLRequestProtocol {
-    var url: URL
-    var body: Data
-    var method: HTTPMethod
-    var headers: [String: String]?
+public struct AudioFileUploadRequest: URLRequestProtocol {
+    public var url: URL
+    public var body: Data
+    public var method: HTTPMethod
+    public var headers: [String: String]?
     private static let boundary: String = "Boundary-\(UUID().uuidString)"
 
     init(fileUrl: URL, endpoint: String) throws {
