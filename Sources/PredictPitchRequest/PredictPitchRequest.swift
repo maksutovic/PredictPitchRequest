@@ -1,26 +1,26 @@
 import Foundation
 
 public struct MidiResponse: Codable {
-    let instruments: [Instrument]
+    let notes: [PredictNote]
 }
 
 // Represents each instrument in the JSON response
-public struct Instrument: Codable {
-    public let name: String?
-    public let program: Int
-    public let isDrum: Bool
-    public let notes: [Note]
-
-    public enum CodingKeys: String, CodingKey {
-        case name
-        case program
-        case isDrum = "is_drum"
-        case notes
-    }
-}
+//public struct Instrument: Codable {
+//    public let name: String?
+//    public let program: Int
+//    public let isDrum: Bool
+//    public let notes: [PredictNote]
+//
+//    public enum CodingKeys: String, CodingKey {
+//        case name
+//        case program
+//        case isDrum = "is_drum"
+//        case notes
+//    }
+//}
 
 // Represents each note in the JSON response
-public struct Note: Codable {
+public struct PredictNote: Codable {
     public let pitch: Int
     public let start: Double
     public let end: Double
