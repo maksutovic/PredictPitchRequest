@@ -4,21 +4,6 @@ public struct MidiResponse: Codable {
     public let notes: [PredictNote]
 }
 
-// Represents each instrument in the JSON response
-//public struct Instrument: Codable {
-//    public let name: String?
-//    public let program: Int
-//    public let isDrum: Bool
-//    public let notes: [PredictNote]
-//
-//    public enum CodingKeys: String, CodingKey {
-//        case name
-//        case program
-//        case isDrum = "is_drum"
-//        case notes
-//    }
-//}
-
 // Represents each note in the JSON response
 public struct PredictNote: Codable {
     public let pitch: Int
@@ -44,8 +29,7 @@ extension URLRequestProtocol {
     public var urlRequest: URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
-        request.httpBody = body
-    
+        
         headers?.forEach { key, value in
             request.addValue(value, forHTTPHeaderField: key)
         }
